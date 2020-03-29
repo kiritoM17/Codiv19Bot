@@ -2,7 +2,7 @@ const axios = require("axios");
 class SendMessage {
   constructor() {}
   //function d'envoie résultat au serveur
-  async callSendAPI(messageData, recipientId, messageId) {
+  async callSendAPI(messageData) {
     const url =
       "https://graph.facebook.com/v3.0/me/messages?access_token=" +
       "EAAJUYWCOXUwBAIkdynUZBVi9v8kGkPxTwR26lDgOQCvZBlGyUV9xTXPrD082ZBSudgOBpbsrUrwv0igxepZCk62a7Yoi9GVbZALTwWB30d8Tu7yboHakOJIhNizQZALrQo5N028tT9y9Y708Vxja3KZA9Gfop4uHJuPdAjTBDC4vgZDZD";
@@ -101,7 +101,49 @@ class SendMessage {
 
     this.callSendAPI(msg);
   }
-
+  //function qui rencoie le menu quick replie
+  sendQuickMenu(sender) {
+    let menu = [
+      {
+        content_type: "text",
+        title: " le codiv-19",
+        payload: "information sur le codiv-19"
+      },
+      {
+        content_type: "text",
+        title: "mode de transmission",
+        payload: "mode de transmission codiv-19"
+      },
+      {
+        content_type: "text",
+        title: "messure preventive",
+        payload: "messure preventive codiv-19"
+      },
+      {
+        content_type: "text",
+        title: "symptômes",
+        payload: "symptômes codiv-19"
+      },
+      {
+        content_type: "text",
+        title: "messures gouvernementales",
+        payload: "messures gouvernementales"
+      },
+      {
+        content_type: "text",
+        title: "conseil",
+        payload: "conseils codiv-19 virus"
+      },
+      {
+        content_type: "text",
+        title: "situation codiv-19",
+        payload: "situation codiv-19"
+      }
+    ];
+    setTimeout(() => {
+      this.sendQuickReplay(sender, menu, "Voici ce que je sais Faire !:");
+    }, 400);
+  }
   //function d'envoie message particulier
   sendObject(recipientId, message) {
     var msg = {

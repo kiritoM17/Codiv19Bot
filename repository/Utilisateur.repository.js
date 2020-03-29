@@ -6,12 +6,16 @@ class UtilisateurRepository {
   sauvegarderUtilisateur(user) {
     user.save();
   }
-  finByFacebookId(id, cb) {
+  finByFacebookId(id) {
     return user.findById(id);
   }
-  updateUtilisateur(id, update, cb) {
+  findOne(id) {
+    let query = user.find({ _id: id });
+    return query;
+  }
+  updateUtilisateur(id, update) {
     user
-      .findByIdAndUpdate(id, update, cb)
+      .findByIdAndUpdate(id, update)
       .then(result => console.log("updating sucessfully"))
       .catch(err => console.log("updating error try this message", err));
   }
